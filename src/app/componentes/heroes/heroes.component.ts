@@ -10,6 +10,7 @@ export class HeroesComponent implements OnInit {
 
   constructor(private heroesService: HeroesService) { }
   
+  titulo: String = "Inicio";
   items: any = []
   carga: boolean = true;
   msg: String = "Cargado datos...";

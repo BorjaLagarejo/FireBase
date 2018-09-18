@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HeroeComponent implements OnInit {
 
+  titulo: String = "Nuevo Heroe";
   heroe: Heroe = {
     nombre: "",
     casa: "",
