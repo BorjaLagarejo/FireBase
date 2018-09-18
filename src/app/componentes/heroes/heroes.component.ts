@@ -10,7 +10,9 @@ export class HeroesComponent implements OnInit {
 
   constructor(private heroesService: HeroesService) { }
   
-  list: any = []
+  items: any = []
+  carga: boolean = true;
+  msg: String = "Cargado datos...";
 
 
   ngOnInit() {
@@ -18,9 +20,17 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes() {
-    console.log(this.heroesService.getHeroes());
-    this.list = this.heroesService.getHeroes();
-    console.log(this.list);
+    this.heroesService.getHeroes().subscribe(data => {
+      this.items = (data);
+      console.log(data);
+      if(data != null){
+        this.carga = false;
+      }else{
+        this.msg = "No hay datos";
+      }
+    },
+      error => console.error(error));
+    
     
   }
 

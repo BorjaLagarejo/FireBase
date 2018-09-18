@@ -11,12 +11,14 @@ import { HeroesService } from './servicio/heroes.service';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './componentes/heroes/heroes.component';
 import { HeroeComponent } from './componentes/heroes/heroe.component';
+import { KeysPipe } from './pipes/keys.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroeComponent
+    HeroeComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

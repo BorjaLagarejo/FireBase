@@ -1,9 +1,10 @@
 <div class="row mt-3">
   <div class="col">
-    <h1> Nuevo héroe </h1>
+    <h1> Nuevo héroe  <small> {{ heroe.nombre }} </small> </h1>
   </div>
   <div class="col">
-    <div class="col-md-12 text-right pt-3">
+    <div class="col-md-12 text-right mt-3">
+      <button *ngIf="this.id != 'new'" (click)="reset(forma)"  type="button" class="btn btn-success mr-3"> Nuevos Campos</button>
       <button [routerLink]="[ '/', '' ]" type="button" class="btn btn-info"> Volver </button>
     </div>
   </div>
@@ -12,7 +13,7 @@
 
 <div class="row">
   <div class="col">
-    <form (ngSubmit)="guardar()" #forma="ngForm">
+    <form (ngSubmit)="setGuardar()" #forma="ngForm">
 
       <div class="form-group">
         <label for="nombre">Nombre</label>
@@ -21,15 +22,19 @@
 
       <div class="form-group">
         <label for="casa">Casa</label>
-        <input [(ngModel)]="heroe.casa" name="casa" type="text" class="form-control" id="casa" required>
+        <select [(ngModel)]="heroe.casa" name="casa" class="custom-select" id="casa" required>
+            <option selected></option>
+            <option value="Marvel">Marvel</option>
+            <option value="DC">DC</option>
+          </select>
       </div>
 
       <div class="form-group">
         <label for="opciones">Opciones</label>
-        <input [(ngModel)]="heroe.bio" name="bio" type="text" class="form-control" id="opciones">
+        <textarea [(ngModel)]="heroe.bio"  name="bio" type="text" class="form-control" id="opciones"></textarea>
       </div>
 
-      <button [disabled]="!forma.valid" type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+      <button [disabled]="!forma.valid" type="submit" class="btn btn-primary btn-block">Enviar</button>
     </form>
   </div>
   <div class="col-4">
